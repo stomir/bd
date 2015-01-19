@@ -13,6 +13,8 @@ class Usos_Use_Page extends WP_Widget {
 
 	public function widget ($args, $instance) {
 		global $post, $use_page_errors, $wpdb;
+		if (get_current_user_id() == 0)
+			return;
 
 		require_once(dirname(__FILE__).'/../inc/calendar.php');
 		?> <aside> <h1 class="widget-title"> <?php echo $instance['title']; ?> </h1> <?php

@@ -20,12 +20,15 @@ function use_page_form_apply () {
 				));
 				if ($decl_id != -1) {
 					$wpdb->query('UPDATE `'.$wpdb->prefix.'usos_note_decl` SET notes_id='.$wpdb->insert_id." WHERE ID=$decl_id");
+					do_action('usosplan_note_fulfill');
 				}
+				do_action('usosplan_note_publish');
 				$use_page_errors->add(2, 'Notes published');
 			break;
 			case 'add_homework':
 				$group_id = ($_REQUEST['group_number'] == '') ? 'NULL' : "'".intval($_REQUEST['group_number'])."'";
 				$wpdb->query('INSERT INTO `'.$wpdb->prefix.'usos_homework` VALUES (NULL, '.$post->ID.", $group_id, ".strtotime($_REQUEST['homework_time']).", ".get_current_user_id().')');
+				do_action('usosplan_homework_add');
 				$use_page_errors->add(4, 'Added homework');
 			break;
 			case 'add_test':
@@ -38,6 +41,7 @@ function use_page_form_apply () {
 				$homework_id = intval($_REQUEST['homework_id']);
 				$wpdb->query('INSERT INTO `'.$wpdb->prefix.'usos_hand_in` VALUES (NULL, '.get_current_user_id().', '.$post->ID.", $homework_id, ".time().")");
 				$wpdb->query('UPDATE `'.$wpdb->prefix.'posts` SET post_status=\'private\' WHERE ID='.$post->ID);
+				do_action('usosplan_homework_hand_in');
 				$use_page_errors->add(6, 'Homework handed in');
 			break;
 			default: break;
@@ -51,6 +55,7 @@ function note_decl_form_apply () {
 		return;
 	if (isset($_REQUEST['usos_note_declaration'])) {
 		$wpdb->query('INSERT INTO `'.$wpdb->prefix.'usos_note_decl` VALUES (NULL, \''.esc_sql($_REQUEST['usos_note_declaration']).'\', NULL, '.get_current_user_id().', '.time().')');
+		do_action('usosplan_note_declaration');
 		header("Location: ".$_SERVER['REQUEST_URI']);
 	}
 }
