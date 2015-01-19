@@ -78,12 +78,12 @@ function _s_setup() {
 }
 
 function usosplan_install () {
-	require_once('inc/database.php');
+	require_once(get_template_directory().'/inc/database.php');
 	usosplan_database_install();	
 }
 
 function usosplan_uninstall () {
-	require_once(get_template_directory().'/inc/database.php');
+	require_once('/inc/database.php');
 	usosplan_database_uninstall();
 }
 
