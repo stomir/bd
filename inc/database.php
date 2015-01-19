@@ -103,7 +103,7 @@ function usosplan_database_uninstall () {
 	$wpdb->query ("DROP TABLE `$usos_homework`");
 	$wpdb->query ("DROP TABLE `$usos_hand_in`");
 	$wpdb->query ("DROP TABLE `$usos_badge`");
-	$wpdb->query ("DROP TABLE `$usos_badge`");
+	$wpdb->query ("DROP TABLE `$usos_test`");
 }
 
 function get_user_by_usos_user_id ($usos_id) {
