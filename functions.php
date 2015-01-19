@@ -83,7 +83,7 @@ function usosplan_install () {
 }
 
 function usosplan_uninstall () {
-	require_once('/inc/database.php');
+	require_once('inc/database.php');
 	usosplan_database_uninstall();
 }
 
