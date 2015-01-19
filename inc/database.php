@@ -1,13 +1,5 @@
 <?php
 
-function get_badge($user_id) {
-	$user_id = intval($user_id);
-	$result = $wpdb->get_row('SELECT description `'.$wpdb->prefix."usos_badge WHERE user_id = $user_id");
-	if ($result == null)
-		return '';
-	return '<abbr title="'.esc_html($result->description).'">&#10026;</abbr>';
-}
-
 function usosplan_database_install () {
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	global $wpdb;

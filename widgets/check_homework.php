@@ -37,7 +37,7 @@ class Usos_Check_Homework extends WP_Widget {
 				);
 			echo '<ul>';
 			foreach ($hand_ins as $hand_in) {
-				echo '<li><a href="'.get_permalink($hand_in->page_id).'">'.esc_html($hand_in->post_title).' by '.$hand_in->display_name.get_badge($hand_in->user_id).'</a> (<span';
+				echo '<li><a href="'.get_permalink($hand_in->page_id).'">'.esc_html($hand_in->post_title).' by '.$hand_in->display_name.'</a> (<span';
 				if ($row->time < $hand_in->time)
 					echo ' style="color: red"';
 				echo '>';
@@ -70,7 +70,7 @@ class Usos_Check_Homework extends WP_Widget {
 					echo ' style="color: red"';
 				echo '>';
 				echo date(get_option('date_format').' '.get_option('time_format'), $row->time);
-				echo '</span>) for <a href="'.get_permalink($home->page_id).'">'.esc_html($home->post_title).'</a> by '.$home->display_name.get_badge($home->user_id);
+				echo '</span>) for <a href="'.get_permalink($home->page_id).'">'.esc_html($home->post_title).'</a> by '.$home->display_name;
 				echo '</li>';
 			}
 			if (empty($hand_ins)) {

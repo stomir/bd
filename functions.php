@@ -78,7 +78,7 @@ function _s_setup() {
 }
 
 function usosplan_install () {
-	require_once(get_template_directory().'/inc/database.php');
+	require_once('inc/database.php');
 	usosplan_database_install();	
 }
 
